@@ -1,0 +1,12 @@
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\bin\Debug\LYZJ.HM3Shop.IDAL.dll
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\bin\Debug\LYZJ.HM3Shop.IDAL.pdb
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.csproj.CoreCompileInputs.cache
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.dll
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.pdb
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\bin\Debug\LYZJ.HM3Shop.Model.dll
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\bin\Debug\EntityFramework.dll
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\bin\Debug\LYZJ.HM3Shop.Model.pdb
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\bin\Debug\LYZJ.HM3Shop.Model.dll.config
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\bin\Debug\EntityFramework.xml
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.csprojAssemblyReference.cache
+C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.csproj.CopyComplete

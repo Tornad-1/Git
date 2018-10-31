@@ -1,0 +1,22 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+using LYZJ.HM3Shop.Model;
+namespace LYZJ.HM3Shop.IDAL
+{   
+<# string[] arr={"UserInfo","ActionGroup","ActionInfo","Category","GoodInfo","GoodSKU","GoodsPropValue","ImageInfo","Property","PropOption","R_UserInfo_ActionInfo","R_UserInfo_Role","Role","Shop","实体1"};  #>
+<#
+foreach(var data in arr)
+{ #>
+ 
+ 
+    public partial interface I<#= data#>Repository:IBaseRepository<<#= data#>>                
+    {                  
+
+ 
+    }
+<#}#>
+}

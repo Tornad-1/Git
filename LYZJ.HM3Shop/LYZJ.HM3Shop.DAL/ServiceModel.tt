@@ -1,0 +1,32 @@
+﻿//根据数据库表明生成实体类  ---不通过  存在中间表
+<#@ template language="C#" debug="True" hostspecific="True" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Data" #>
+<#@ assembly name="System.xml" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Data.SqlClient" #>
+<#@ import namespace="System.Data" #>
+using LYZJ.HM3Shop.IDAL;
+using LYZJ.HM3Shop.Model;
+namespace LYZJ.UserLimitMVC.DAL
+{     
+      <#
+string connectionString = "Data Source=.;Initial Catalog=HM3Data;User ID=sa;Password=123456;";
+SqlConnection conn = new SqlConnection(connectionString);
+conn.Open();
+System.Data.DataTable schema = conn.GetSchema("TABLES");//GetSchema():返回此SqlConnection的数据源的架构信息。
+
+System.Data.DataSet ds = new DataSet();
+ 
+ 
+foreach(System.Data.DataRow row in schema.Rows)
+{ #>
+ 
+ 
+    public partial class <#= row["TABLE_NAME"].ToString()#>Repository: BaseRepository<<#= row["TABLE_NAME"].ToString()#>>,I<#= row["TABLE_NAME"].ToString()#>Repository                  
+    {                  
+
+ 
+    }
+<#}#>
+}
