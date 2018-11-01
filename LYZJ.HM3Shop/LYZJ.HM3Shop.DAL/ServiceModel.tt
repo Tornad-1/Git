@@ -1,6 +1,6 @@
 ﻿//根据数据库表明生成实体类  ---不通过  存在中间表
 <#@ template language="C#" debug="True" hostspecific="True" #>
-<#@ output extension=".cs" #>
+<#@ output extension=".txt" #>
 <#@ assembly name="System.Data" #>
 <#@ assembly name="System.xml" #>
 <#@ import namespace="System.Collections.Generic" #>

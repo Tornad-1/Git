@@ -3,3 +3,9 @@ C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\bin\Debug\LYZJ.HM
 C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.csproj.CoreCompileInputs.cache
 C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.dll
 C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.pdb
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\bin\Debug\LYZJ.HM3Shop.Common.dll
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\bin\Debug\LYZJ.HM3Shop.Common.pdb
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.csprojAssemblyReference.cache
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.csproj.CoreCompileInputs.cache
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.dll
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.pdb

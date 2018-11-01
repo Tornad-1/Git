@@ -10,3 +10,15 @@ C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3S
 C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.Model.dll.config
 C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\EntityFramework.xml
 C:\Users\Tornado\source\repos\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\obj\Debug\LYZJ.HM3Shop.IBLL.csproj.CopyComplete
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.IBLL.dll
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.IBLL.pdb
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.Model.dll
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\EntityFramework.dll
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.Model.pdb
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.Model.dll.config
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\bin\Debug\EntityFramework.xml
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\obj\Debug\LYZJ.HM3Shop.IBLL.csprojAssemblyReference.cache
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\obj\Debug\LYZJ.HM3Shop.IBLL.csproj.CoreCompileInputs.cache
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\obj\Debug\LYZJ.HM3Shop.IBLL.csproj.CopyComplete
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\obj\Debug\LYZJ.HM3Shop.IBLL.dll
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IBLL\obj\Debug\LYZJ.HM3Shop.IBLL.pdb

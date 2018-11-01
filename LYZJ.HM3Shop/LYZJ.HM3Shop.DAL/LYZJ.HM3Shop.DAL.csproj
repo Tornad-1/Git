@@ -71,11 +71,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Service.tt</DependentUpon>
     </Compile>
-    <Compile Include="ServiceModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ServiceModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="UserInfoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +88,12 @@
     </Content>
     <Content Include="ServiceModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ServiceModel.cs</LastGenOutput>
+      <LastGenOutput>ServiceModel.txt</LastGenOutput>
+    </Content>
+    <Content Include="ServiceModel.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ServiceModel.tt</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

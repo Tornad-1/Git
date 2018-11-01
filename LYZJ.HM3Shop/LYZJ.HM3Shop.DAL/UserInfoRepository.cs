@@ -8,7 +8,7 @@ using LYZJ.HM3Shop.IDAL;
 
 namespace LYZJ.HM3Shop.DAL
 {//UserInfo仓储
-   public class UserInfoRepository:BaseRepository<UserInfo>,IUserInfoRepository
+   public partial class UserInfoRepository:BaseRepository<UserInfo>,IUserInfoRepository
     {
     }
 }

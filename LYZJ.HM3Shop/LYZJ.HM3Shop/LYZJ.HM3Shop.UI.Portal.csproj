@@ -54,6 +54,10 @@
     <Reference Include="LYZJ.HM3Shop.BLL">
       <HintPath>..\LYZJ.HM3Shop.BLL\bin\Debug\LYZJ.HM3Shop.BLL.dll</HintPath>
     </Reference>
+    <Reference Include="LYZJ.HM3Shop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LYZJ.HM3Shop.Common\bin\Debug\LYZJ.HM3Shop.Common.dll</HintPath>
+    </Reference>
     <Reference Include="LYZJ.HM3Shop.IBLL">
       <HintPath>..\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.IBLL.dll</HintPath>
     </Reference>
@@ -163,6 +167,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1098,6 +1103,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\UserInfo\Index.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
