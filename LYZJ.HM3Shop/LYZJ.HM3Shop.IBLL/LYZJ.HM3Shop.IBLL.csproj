@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LYZJ.HM3Shop.Common">
+      <HintPath>..\LYZJ.HM3Shop.Common\bin\Debug\LYZJ.HM3Shop.Common.dll</HintPath>
+    </Reference>
     <Reference Include="LYZJ.HM3Shop.Model">
       <HintPath>..\LYZJ.HM3Shop.Model\bin\Debug\LYZJ.HM3Shop.Model.dll</HintPath>
     </Reference>

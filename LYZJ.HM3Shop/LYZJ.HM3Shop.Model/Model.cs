@@ -14,7 +14,7 @@ namespace LYZJ.HM3Shop.Model
             this.DelFlag = 0;
             this.R_UserInfo_Role = new HashSet<R_UserInfo_Role>();
             this.R_UserInfo_ActionInfo = new HashSet<R_UserInfo_ActionInfo>();
-            this.ActionGroup = new HashSet<ActionGroup>();
+            //this.ActionGroup = new HashSet<ActionGroup>();
             this.实体1 = new HashSet<实体1>();
         }
         public int UserInfoID { get; set; }
@@ -28,7 +28,7 @@ namespace LYZJ.HM3Shop.Model
 
         public virtual ICollection<R_UserInfo_Role> R_UserInfo_Role { get; set; }
         public virtual ICollection<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }
-        public virtual ICollection<ActionGroup> ActionGroup { get; set; }
+        //public virtual ICollection<ActionGroup> ActionGroup { get; set; }
         public virtual ICollection<实体1> 实体1 { get; set; }
     }
     public class ActionGroup
@@ -36,7 +36,7 @@ namespace LYZJ.HM3Shop.Model
         public ActionGroup()
         {
             this.ActionInfo = new HashSet<ActionInfo>();
-            this.UserInfo = new HashSet<UserInfo>();
+            //this.UserInfo = new HashSet<UserInfo>();
             this.Role = new HashSet<Role>();
         }
         public int ActionGroupID { get; set; }
@@ -45,7 +45,7 @@ namespace LYZJ.HM3Shop.Model
         public short GroupType { get; set; }
 
         public virtual ICollection<ActionInfo> ActionInfo { get; set; }
-        public virtual ICollection<UserInfo> UserInfo { get; set; }
+        //public virtual ICollection<UserInfo> UserInfo { get; set; }
         public virtual ICollection<Role> Role { get; set; }
     }
 
@@ -55,7 +55,7 @@ namespace LYZJ.HM3Shop.Model
         {
             this.RequestHttpType = "\"Get\"";
             this.ActionType = 0;
-            this.Role = new HashSet<Role>();
+            //this.Role = new HashSet<Role>();
             this.R_UserInfo_ActionInfo = new HashSet<R_UserInfo_ActionInfo>();
             this.ActionGroup = new HashSet<ActionGroup>();
         }
@@ -65,7 +65,7 @@ namespace LYZJ.HM3Shop.Model
         public string ActionName { get; set; }
         public System.DateTime SubTime { get; set; }
         public short ActionType { get; set; }
-        public virtual ICollection<Role> Role { get; set; }
+        //public virtual ICollection<Role> Role { get; set; }
         public virtual ICollection<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }
         public virtual ICollection<ActionGroup> ActionGroup { get; set; }
     }
@@ -208,7 +208,7 @@ namespace LYZJ.HM3Shop.Model
             this.RoleType = 0;
             this.DelFlag = 0;
             this.R_UserInfo_Role = new HashSet<R_UserInfo_Role>();
-            this.ActionInfo = new HashSet<ActionInfo>();
+            //this.ActionInfo = new HashSet<ActionInfo>();
             this.ActionGroup = new HashSet<ActionGroup>();
         }
 
@@ -219,7 +219,7 @@ namespace LYZJ.HM3Shop.Model
         public System.DateTime SubTime { get; set; }
 
         public virtual ICollection<R_UserInfo_Role> R_UserInfo_Role { get; set; }
-        public virtual ICollection<ActionInfo> ActionInfo { get; set; }
+        //public virtual ICollection<ActionInfo> ActionInfo { get; set; }
         public virtual ICollection<ActionGroup> ActionGroup { get; set; }
     }
     public class Shop

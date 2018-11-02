@@ -118,3 +118,5 @@ C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Tests\obj\Debug\LYZJ.HM3Shop.Tests.csproj.CoreC
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Tests\obj\Debug\LYZJ.HM3Shop.Tests.csproj.CopyComplete
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Tests\obj\Debug\LYZJ.HM3Shop.Tests.dll
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Tests\obj\Debug\LYZJ.HM3Shop.Tests.pdb
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Tests\bin\Debug\LYZJ.HM3Shop.Common.dll
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Tests\bin\Debug\LYZJ.HM3Shop.Common.pdb

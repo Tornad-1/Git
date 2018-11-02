@@ -51,14 +51,20 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="LYZJ.HM3Shop.BLL">
+    <Reference Include="LYZJ.HM3Shop.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LYZJ.HM3Shop.BLL\bin\Debug\LYZJ.HM3Shop.BLL.dll</HintPath>
     </Reference>
     <Reference Include="LYZJ.HM3Shop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LYZJ.HM3Shop.Common\bin\Debug\LYZJ.HM3Shop.Common.dll</HintPath>
     </Reference>
-    <Reference Include="LYZJ.HM3Shop.IBLL">
+    <Reference Include="LYZJ.HM3Shop.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\LYZJ.HM3Shop.DAL\bin\Debug\LYZJ.HM3Shop.DAL.dll</HintPath>
+    </Reference>
+    <Reference Include="LYZJ.HM3Shop.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.IBLL.dll</HintPath>
     </Reference>
     <Reference Include="LYZJ.HM3Shop.Model">
@@ -1099,11 +1105,9 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\UserInfo\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
