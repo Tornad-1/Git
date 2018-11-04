@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Windows;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,12 +13,15 @@ using LYZJ.HM3Shop.Model;
 
 namespace LYZJ.HM3Shop.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         private IUserInfoService _iUserInfoService = new UserInfoService();
         // GET: Login
         public ActionResult Index()
         {
+            var UName = Request.Cookies["UName"] == null ? "" : Request.Cookies["UName"].Value;//传递cookies值
+            ViewBag.UName = UName;
             return View();
         }
         /// <summary>
@@ -81,6 +86,11 @@ namespace LYZJ.HM3Shop.Controllers
                     UserInfoError = "未知错误,请检查您的数据库";
                     break;
             }
+            Session["UserInfo"] = userInfo;
+            //=====================================将SessionId存入Application中===============================
+            //var a = Session.SessionID;
+            //HttpContext.Application["User"]=a;
+            //===========================================待完善===============================================
             return Content(UserInfoError);
         }
     }

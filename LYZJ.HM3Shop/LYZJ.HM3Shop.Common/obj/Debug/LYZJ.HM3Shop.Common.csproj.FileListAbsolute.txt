@@ -9,3 +9,5 @@ C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.csprojAsse
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.csproj.CoreCompileInputs.cache
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.dll
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Common\obj\Debug\LYZJ.HM3Shop.Common.pdb
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.Common.dll
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.Common.pdb

@@ -38,3 +38,5 @@ C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.BLL\bin\Debug\EntityFramework.xml
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.BLL\obj\Debug\LYZJ.HM3Shop.BLL.csproj.CopyComplete
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.BLL\bin\Debug\LYZJ.HM3Shop.Common.dll
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.BLL\bin\Debug\LYZJ.HM3Shop.Common.pdb
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.BLL.dll
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.BLL.pdb

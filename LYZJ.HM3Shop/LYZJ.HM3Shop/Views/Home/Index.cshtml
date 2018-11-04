@@ -53,15 +53,15 @@
 
                     function ReadDateTimeShow(){
 
-                        varyear = newDate().getFullYear();
+                        var year = newDate().getFullYear();
 
-                        varMonth = newDate().getMonth() + 1;
+                        var Month = newDate().getMonth() + 1;
 
-                        varDay = newDate().getDate();
+                        var Day = newDate().getDate();
 
-                        varTime = newDate().toLocaleTimeString();
+                        var Time = newDate().toLocaleTimeString();
 
-                        varAddDate = year + "年" + Month + "月" + Day + "日,时间:" + Time;
+                        var AddDate = year + "年" + Month + "月" + Day + "日,时间:" + Time;
 
                         $("#date").text(AddDate);
 
@@ -83,7 +83,7 @@
 
             <div id="top" data-options="region:'center'" style="text-align:center;">
 
-                <h1>陇原之家后台权限管理系统——Katana（唐震） @@ MVC权限系统</h1>
+                <h1>陇原之家后台权限管理系统——Katana @@ MVC权限系统</h1>
 
             </div>
 

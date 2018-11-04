@@ -8,10 +8,15 @@ using LYZJ.HM3Shop.Model;
 
 namespace LYZJ.HM3Shop.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
+            UserInfo uInfo = Session["UserInfo"] as UserInfo;
+            if (uInfo != null)
+            {
+                ViewBag.UName = uInfo.UName;
+            }
             LYZJDbContext db = new LYZJDbContext();            
             return View(db.UserInfo.ToList());
         }

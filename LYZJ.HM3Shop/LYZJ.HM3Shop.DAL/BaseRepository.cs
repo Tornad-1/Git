@@ -35,8 +35,8 @@ namespace LYZJ.HM3Shop.DAL
             return true;
         }
         /// <summary>
-        /// 加载数据        IQueryable<T>  linq to sql 生成sql脚本进行查询
-        /// </summary>
+        /// 加载数据        IQueryable<T>  linq to sql 生成sql脚本进行查询    Func<T, bool>会进行查询全表
+        /// </summary> 
         /// <param name="whereLambda">加载的条件</param>
         /// <returns></returns>
         public IQueryable<T> LoadEntities(Func<T, bool> whereLambda)

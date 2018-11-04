@@ -32,3 +32,6 @@ C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.DAL\bin\Debug\LYZJ.HM3Shop.IDAL.pdb
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.DAL\bin\Debug\LYZJ.HM3Shop.Model.pdb
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.DAL\bin\Debug\LYZJ.HM3Shop.Model.dll.config
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.DAL\obj\Debug\LYZJ.HM3Shop.DAL.csproj.CopyComplete
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.DAL.dll.config
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.DAL.dll
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.DAL.pdb

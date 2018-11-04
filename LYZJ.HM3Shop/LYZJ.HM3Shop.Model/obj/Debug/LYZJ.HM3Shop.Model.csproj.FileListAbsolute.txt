@@ -22,3 +22,6 @@ C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Model\obj\Debug\LYZJ.HM3Shop.Model.csproj.CoreC
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Model\obj\Debug\LYZJ.HM3Shop.Model.csproj.CopyComplete
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Model\obj\Debug\LYZJ.HM3Shop.Model.dll
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.Model\obj\Debug\LYZJ.HM3Shop.Model.pdb
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.Model.dll.config
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.Model.dll
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.Model.pdb

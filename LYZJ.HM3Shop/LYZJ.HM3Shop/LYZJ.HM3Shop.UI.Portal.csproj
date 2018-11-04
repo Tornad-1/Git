@@ -53,11 +53,11 @@
     </Reference>
     <Reference Include="LYZJ.HM3Shop.BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYZJ.HM3Shop.BLL\bin\Debug\LYZJ.HM3Shop.BLL.dll</HintPath>
+      <HintPath>..\lib\LYZJ.HM3Shop.BLL.dll</HintPath>
     </Reference>
     <Reference Include="LYZJ.HM3Shop.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYZJ.HM3Shop.Common\bin\Debug\LYZJ.HM3Shop.Common.dll</HintPath>
+      <HintPath>..\lib\LYZJ.HM3Shop.Common.dll</HintPath>
     </Reference>
     <Reference Include="LYZJ.HM3Shop.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -65,10 +65,11 @@
     </Reference>
     <Reference Include="LYZJ.HM3Shop.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYZJ.HM3Shop.IBLL\bin\Debug\LYZJ.HM3Shop.IBLL.dll</HintPath>
+      <HintPath>..\lib\LYZJ.HM3Shop.IBLL.dll</HintPath>
     </Reference>
-    <Reference Include="LYZJ.HM3Shop.Model">
-      <HintPath>..\LYZJ.HM3Shop.Model\bin\Debug\LYZJ.HM3Shop.Model.dll</HintPath>
+    <Reference Include="LYZJ.HM3Shop.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\LYZJ.HM3Shop.Model.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -80,6 +81,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -172,12 +174,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserInfoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\isAuthorizeAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1094,7 +1098,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1111,7 +1117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using LYZJ.HM3Shop.IDAL;
 using LYZJ.HM3Shop.DAL;
 using LYZJ.HM3Shop.Model;
-using LYZJ.HM3Shop.IBLL;
 using LYZJ.HM3Shop.Common;
+using LYZJ.HM3Shop.IBLL;
+
 
 namespace LYZJ.HM3Shop.BLL
 {
@@ -47,17 +48,46 @@ namespace LYZJ.HM3Shop.BLL
             }
         }
 
-        //public UserInfo AddUserInfo(UserInfo userInfo)
-        //{
-        //    return _userInfoRepository.AddEntity(userInfo);
-        //}
-        //public bool UpdateUserInfo(UserInfo userInfo)
-        //{
-        //    return _userInfoRepository.UpdateEntity(userInfo);
-        //}
-        //public bool DeleteUserInfo(UserInfo userInfo)
-        //{
-        //    return _userInfoRepository.DeleteEntity(userInfo);
-        //}
+        /// <summary>
+        /// 加载用户模糊查询的数据（调用LoadEntities实现加载）
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public IQueryable<UserInfo> LoadSearchData(GetModelQuery query)
+        {
+            //拿到所有的数据
+            var temp = _DbSession.UserInfoRepository.LoadEntities(u => true);
+
+            //进行过滤姓名
+            if (!string.IsNullOrEmpty(query.Name))
+            {
+                temp = temp.Where<UserInfo>(u => u.UName.Contains(query.Name));
+            }
+            //进行邮箱的过滤
+            if (!string.IsNullOrEmpty(query.Mail))
+            {
+                temp = temp.Where<UserInfo>(u => u.Mail.Contains(query.Mail));
+            }
+            //返回总数
+            query.total = temp.Count();
+
+            //做分页查询
+            return temp.Skip(query.pageSize * (query.pageIndex - 1)).Take(query.pageSize).AsQueryable();
+
+        }
+        /// <summary>
+        /// 删除用户（调用接口函数DeleteEntity()实现删除）
+        /// </summary>
+        /// <param name="DeleteUserInfoID"></param>
+        /// <returns></returns>
+        public int DeleteUserInfo(List<int> DeleteUserInfoID)
+        {
+            foreach (var ID in DeleteUserInfoID)
+            {
+                _DbSession.UserInfoRepository.DeleteEntity(new UserInfo() { UserInfoID = ID });
+            }
+            return _DbSession.SaveChanges();
+        }
+
     }
 }

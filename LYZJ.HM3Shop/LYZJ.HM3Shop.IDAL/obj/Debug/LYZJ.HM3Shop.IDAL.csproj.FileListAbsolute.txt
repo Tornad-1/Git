@@ -22,3 +22,5 @@ C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.csproj.CoreCom
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.csproj.CopyComplete
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.dll
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop.IDAL\obj\Debug\LYZJ.HM3Shop.IDAL.pdb
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.IDAL.dll
+C:\Git\LYZJ.HM3Shop\lib\LYZJ.HM3Shop.IDAL.pdb
