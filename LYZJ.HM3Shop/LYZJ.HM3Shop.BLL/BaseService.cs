@@ -29,11 +29,13 @@ namespace LYZJ.HM3Shop.BLL
             _DbSession.SaveChanges();
             return AddEntity;
         }
+        //==================================================== 待完成 ========================================================
         public bool UpdateEntity(T entity)
         {
             CurrentRepository.UpdateEntity(entity);
             return _DbSession.SaveChanges()>0;  
         }
+        //====================================================  Update报错  ==================================================
         public bool DeleteEntity(T entity)
         {
             CurrentRepository.DeleteEntity(entity);

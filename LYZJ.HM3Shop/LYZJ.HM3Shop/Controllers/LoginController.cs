@@ -88,8 +88,8 @@ namespace LYZJ.HM3Shop.Controllers
             }
             Session["UserInfo"] = userInfo;
             //=====================================将SessionId存入Application中===============================
-            //var a = Session.SessionID;
-            //HttpContext.Application["User"]=a;
+            var a = Session.SessionID;
+            HttpContext.Application["User"] = a+',';
             //===========================================待完善===============================================
             return Content(UserInfoError);
         }

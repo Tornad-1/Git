@@ -20,10 +20,10 @@ namespace LYZJ.HM3Shop.Model
         public int UserInfoID { get; set; }
         public string UName { get; set; }
         public string Pwd { get; set; }
-        public string Phone { get; set; }
+        public int Phone { get; set; }
         public string Mail { get; set; }
-        public System.DateTime SubTime { get; set; }
-        public System.DateTime LastModifiedOn { get; set; }
+        public System.DateTime? SubTime { get; set; }
+        public System.DateTime? LastModifiedOn { get; set; }
         public short DelFlag { get; set; }
 
         public virtual ICollection<R_UserInfo_Role> R_UserInfo_Role { get; set; }
@@ -63,7 +63,7 @@ namespace LYZJ.HM3Shop.Model
         public string RequestUrl { get; set; }
         public string RequestHttpType { get; set; }
         public string ActionName { get; set; }
-        public System.DateTime SubTime { get; set; }
+        public System.DateTime? SubTime { get; set; }
         public short ActionType { get; set; }
         //public virtual ICollection<Role> Role { get; set; }
         public virtual ICollection<R_UserInfo_ActionInfo> R_UserInfo_ActionInfo { get; set; }

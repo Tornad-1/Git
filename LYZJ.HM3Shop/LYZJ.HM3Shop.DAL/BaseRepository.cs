@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using LYZJ.HM3Shop.Model;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace LYZJ.HM3Shop.DAL
 {/// <summary>
@@ -20,13 +21,31 @@ namespace LYZJ.HM3Shop.DAL
             //db.SaveChanges();将SaveChanges()放在BLL层中调用
             return entity;
         }
+        public Boolean RemoveHoldingEntityInContext(T entity)
+        {
+            var objContext = ((IObjectContextAdapter)db).ObjectContext;
+            var objSet = objContext.CreateObjectSet<T>();
+            var entityKey = objContext.CreateEntityKey(objSet.EntitySet.Name, entity);
+
+            Object foundEntity;
+            var exists = objContext.TryGetObjectByKey(entityKey, out foundEntity);
+
+            if (exists)
+            {
+                objContext.Detach(foundEntity);
+            }
+
+            return (exists);
+        }
         public bool UpdateEntity(T entity)
         {
+            RemoveHoldingEntityInContext(entity);
             db.Set<T>().Attach(entity);//附加实体（ 区别于Added）
             db.Entry<T>(entity).State = EntityState.Modified;
             //return db.SaveChanges() > 0;
+            db.SaveChanges();
             return true;
-        }
+        }      
         public bool DeleteEntity(T entity)
         {
             db.Set<T>().Attach(entity);
@@ -41,7 +60,7 @@ namespace LYZJ.HM3Shop.DAL
         /// <returns></returns>
         public IQueryable<T> LoadEntities(Func<T, bool> whereLambda)
         {
-            return db.Set<T>().Where<T>(whereLambda).AsQueryable();//将 IEnumerable 或泛型 IEnumerable<T> 转换为 IQueryable 或泛型 IQueryable<T>。   在使用LINQ进行数据集操作时，LINQ 不能直接从数据集对象中查询，因为数据集对象不支持LINQ 查询，所以需要使用AsQueryable 方法返回一个泛型的对象以支持LINQ 的查询操作。
+            return db.Set<T>().Where<T>(whereLambda).AsQueryable().AsNoTracking();//将 IEnumerable 或泛型 IEnumerable<T> 转换为 IQueryable 或泛型 IQueryable<T>。   在使用LINQ进行数据集操作时，LINQ 不能直接从数据集对象中查询，因为数据集对象不支持LINQ 查询，所以需要使用AsQueryable 方法返回一个泛型的对象以支持LINQ 的查询操作。
         }
         /// <summary>
         /// 实现对数据的分页查询

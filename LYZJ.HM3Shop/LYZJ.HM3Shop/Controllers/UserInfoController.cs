@@ -10,43 +10,23 @@ using LYZJ.HM3Shop.BLL;
 using LYZJ.HM3Shop.Common;
 using LYZJ.HM3Shop.Model.Enum;
 using System.Collections;
+using LYZJ.HM3Shop.DAL;
 
 
 namespace LYZJ.HM3Shop.Controllers
 {
     public class UserInfoController : BaseController
     {
-        private LYZJDbContext db = new LYZJDbContext();
+
         private IBLL.IUserInfoService _userInfoService = new UserInfoService();
+
+        private IDAL.IUserInfoRepository _userInfoRepository = new UserInfoRepository();
+
         // GET: UserInfo
         public ActionResult Index()
         {
             return View();
         }
-        //===========================================版本1=========================================================
-        //public JsonResult GetAllUserInfos()
-        //{
-        //    //return Json(db.UserInfo.ToList());
-        //    //Json格式的要求{total:22,rows:{}}
-
-        //    //实现对用户分页的查询，rows：一共多少条，page：请求的当前第几页
-
-        //    int pageIndex = Request["page"] == null ? 1 : int.Parse(Request["page"]);
-
-        //    int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
-
-        //    int total = 0;
-
-        //    //调用分页的方法，传递参数,拿到分页之后的数据
-
-        //    var data = _userInfoService.LoadPageEntities(pageIndex, pageSize, out total, u => true, true, u => u.UserInfoID);
-
-        //    //构造成Json的格式传递
-
-        //    var result = new { total = total, rows = data };
-
-        //    return Json(result, JsonRequestBehavior.AllowGet);
-        //}
         /// <summary>
         /// 得到用户的所有信息
         /// </summary>
@@ -109,9 +89,19 @@ namespace LYZJ.HM3Shop.Controllers
         /// <returns></returns>
         public ActionResult DeleteUserInfo(string deleteUserInfoID, string UName)
         {
+            //========================================== Application 待完成 =======================================
             //首先确认是哪个用户登录进来的，如果此用户正在登录系统，则不允许删除此用户
+            //string a = Convert.ToString(HttpContext.Application["User"]);//获取Application对象中的User变量
+            //int len = a.Length;
+            //a = a.Substring(0, len - 1);
+            //var arr = a.Split(',');//分隔sessionID
+            //List<string> sessionID = new List<string>();
+            //foreach (var ID in arr)
+            //{
+            //    sessionID.Add(ID);
+            //}
+            //=========================================== Application 待完成 ========================================
             UserInfo UInfo = Session["UserInfo"] as UserInfo;
-
             var LoginUName = UInfo.UName;//tz
             var UIdsName = UName.Split(',');//hyl
             List<string> deleteUName = new List<string>();
@@ -161,14 +151,17 @@ namespace LYZJ.HM3Shop.Controllers
         public ActionResult UpdateInfo(UserInfo userInfo)
         {
             //首先查询出要修改的实体对象
-            var EditUserInfo = _userInfoService.LoadEntities(c => c.UserInfoID == userInfo.UserInfoID).FirstOrDefault();
+            var EditUserInfo = _userInfoRepository.LoadEntities(c => c.UserInfoID == userInfo.UserInfoID).FirstOrDefault();// UserInfoID:3
 
             //查询出实体对象给重新复制
             EditUserInfo.UName = userInfo.UName;
             EditUserInfo.Pwd = userInfo.Pwd;
             EditUserInfo.Mail = userInfo.Mail;
             EditUserInfo.Phone = userInfo.Phone;
-            _userInfoService.UpdateEntity(userInfo);
+            EditUserInfo.DelFlag = 0;
+
+            _userInfoRepository.UpdateEntity(userInfo);
+
             return Content("OK");
         }
 
@@ -189,10 +182,20 @@ namespace LYZJ.HM3Shop.Controllers
                 return Content("Error");
             }
         }
-        //public string GetApplication()
-        //{
-           
-        //}
+        /// <summary>
+        /// 绑定用户数据
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public ActionResult GetBindDetails(int ID)
+        {
+            var BindIDForUpdateTextBox = _userInfoService.LoadEntities(u => u.UserInfoID == ID).FirstOrDefault();
+
+            //JavaScriptSerializer JavaScriptSerializer = new JavaScriptSerializer();
+            //var Details = JavaScriptSerializer.Serialize(BindIDForUpdateTextBox);
+            //return Content(Details);
+            return Json(BindIDForUpdateTextBox, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

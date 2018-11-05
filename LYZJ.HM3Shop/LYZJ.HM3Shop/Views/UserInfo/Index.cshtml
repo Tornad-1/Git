@@ -344,7 +344,7 @@
         //弹出修改用户的对话框
         function ShowUpdateUserDialog() {
             var UpdateUserInfoID = $("#test").datagrid("getSelections");
-            if (UpdateUserInfoID.length == 1) {
+            if (UpdateUserInfoID.length == 1) {//判断选中的记录数是否为1
                 $("#UpdateUserDialog").dialog("open").dialog("setTitle", "修改用户信息");
 
                 //绑定显示修改的详细信息的内容
@@ -358,7 +358,7 @@
         //绑定修改用户的信息显示在用户的TextBox文本框中
         function BingUpdateDetailsShowTextBox() {
             //首先获取选中的用户的ID
-            var CheckID = $("#test").datagrid("getSelections")[0].ID;
+            var CheckID = $("#test").datagrid("getSelections")[0].UserInfoID;
 
             //使用异步的getJSON请求绑定前台传递过来的数据
             $.getJSON("/UserInfo/GetBindDetails", { ID: CheckID }, function (date) {
@@ -367,7 +367,7 @@
                 $("#UName1").val(date.UName);
                 $("#Pwd1").val(date.Pwd);
                 $("#PwdOK1").val(date.Pwd);
-                $("#Phone1").val(date.Phone);
+                $("#Phone1").val(date.Phone);//为什么phone没有传过来？--修改界面的phone文本框设置了easyui-numberbox样式
                 $("#Mail1").val(date.Mail);
             });
         }
@@ -383,13 +383,14 @@
 
                 //构造需要修改的参数，//UName1，Pwd1，PwdOK1，Phone1，Mail1
                 var postData = {
-                    ID: $("#ID").val(),
+                    UserInfoID: $("#ID").val(),
                     UName: $("#UName1").val(),
                     Pwd: $("#Pwd1").val(),
                     PwdOK: $("#PwdOK1").val(),
                     Phone: $("#Phone1").val(),
                     Mail: $("#Mail1").val()
                 };
+
 
                 //使用异步实现修改用户信息
                 $.post("/UserInfo/UpdateInfo", postData, function (date) {
@@ -590,6 +591,7 @@
                 </tr>
                 <tr>
                     <td><label for="Phone1">电话：</label></td>
+                    @*<td><input type="text" id="Phone1" name="Phone"/></td>*@
                     <td><input class="easyui-numberbox" type="text" id="Phone1" name="Phone" data-options="validType:'length[1,14]'" /></td>
                     <td><span style="color:red">必须数字</span></td>
                 </tr>

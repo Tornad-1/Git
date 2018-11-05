@@ -61,11 +61,15 @@
     </Reference>
     <Reference Include="LYZJ.HM3Shop.DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\LYZJ.HM3Shop.DAL\bin\Debug\LYZJ.HM3Shop.DAL.dll</HintPath>
+      <HintPath>..\lib\LYZJ.HM3Shop.DAL.dll</HintPath>
     </Reference>
     <Reference Include="LYZJ.HM3Shop.IBLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\LYZJ.HM3Shop.IBLL.dll</HintPath>
+    </Reference>
+    <Reference Include="LYZJ.HM3Shop.IDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\LYZJ.HM3Shop.IDAL.dll</HintPath>
     </Reference>
     <Reference Include="LYZJ.HM3Shop.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

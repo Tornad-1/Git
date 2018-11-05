@@ -188,3 +188,4 @@ C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop\obj\Debug\LYZJ.HM3Shop.UI.Portal.csproj.CopyCom
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop\obj\Debug\LYZJ.HM3Shop.dll
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop\obj\Debug\LYZJ.HM3Shop.pdb
 C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop\bin\LYZJ.HM3Shop.Common.pdb
+C:\Git\LYZJ.HM3Shop\LYZJ.HM3Shop\bin\LYZJ.HM3Shop.BLL.dll.config
