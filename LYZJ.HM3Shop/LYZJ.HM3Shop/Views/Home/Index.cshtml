@@ -38,34 +38,22 @@
     @*执行JavaScript的脚本*@
 
     <script>
+        $(function (){
+            //读取动态变化的时间
+            ReadDateTimeShow();
+            var setTimeInterval = setInterval(ReadDateTimeShow, 1000);
 
-                    $(function () {
+        });
 
-                        //读取动态变化的时间
-
-                        ReadDateTimeShow();
-
-                    });
-
-
-
-                    //读取动态变化的时间
-
-                    function ReadDateTimeShow(){
-
-                        var year = newDate().getFullYear();
-
-                        var Month = newDate().getMonth() + 1;
-
-                        var Day = newDate().getDate();
-
-                        var Time = newDate().toLocaleTimeString();
-
-                        var AddDate = year + "年" + Month + "月" + Day + "日,时间:" + Time;
-
-                        $("#date").text(AddDate);
-
-                    };
+        //读取动态时间的变化
+        function ReadDateTimeShow() {
+            var year = new Date().getFullYear();
+            var Month = new Date().getMonth() + 1;
+            var Day = new Date().getDate();
+            var Time = new Date().toLocaleTimeString();
+            var AddDate = year + "年" + Month + "月" + Day + "日,时间:" + Time;
+            $("#date").text(AddDate);
+        }
 
     </script>
 
@@ -90,15 +78,10 @@
             <div data-options="region:'east',split:true" style="width:500px;">
 
                 <marquee>欢迎管理员<font color="red" size="5">@ViewBag.UName</font>登录陇原之家后台管理</marquee>
-
                 <div style="float: right; padding-right:30px; font-size: 14px; padding-top: 6px;">
-
-                    当前时间：<b id="date">
-                    </b>&nbsp;&nbsp<a href="/Login/Index">
-                        <b>注销</b>
-                    </a>
-
+                    当前时间：<b id="date"></b>  &nbsp;&nbsp<a href="/Login/Index"><b>注销</b></a>
                 </div>
+                <span>当前在线人数：@ViewBag.Count</span>
 
             </div>
 

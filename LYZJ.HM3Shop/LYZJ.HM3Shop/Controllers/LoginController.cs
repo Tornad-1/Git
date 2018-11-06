@@ -87,6 +87,7 @@ namespace LYZJ.HM3Shop.Controllers
                     break;
             }
             Session["UserInfo"] = userInfo;
+            //System.Web.HttpContext.Current.Application["Count"] = Convert.ToInt32(System.Web.HttpContext.Current.Application["Count"]) + 1;
             //=====================================将SessionId存入Application中===============================
             var a = Session.SessionID;
             HttpContext.Application["User"] = a+',';

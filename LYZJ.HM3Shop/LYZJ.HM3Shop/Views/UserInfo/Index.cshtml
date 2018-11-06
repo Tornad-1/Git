@@ -39,98 +39,7 @@
             SearchUNameMailInfo();
 
         });
-        /*function initTable() {
-
-        $('#test').datagrid({   //定位到Table标签，Table标签的ID是test
-
-               UserInfo是控制器，GetAllUserInfos是控制器中获取用户数据的一个Action
-
-            url: '/UserInfo/GetAllUserInfos',   //指向后台的Action来获取当前用户的信息的Json格式的数据
-
-            title: '用户的展示',  //标识
-
-            下面的这些属性如果谁不太清楚的话我建议去官方网站去学习或者在群里我们讨论，这里就不说了
-
-            iconCls: 'icon-save',
-
-            width: 500,
-
-            height: 350,
-
-            nowrap: true,
-
-            autoRowHeight: false,
-
-            striped: true,
-
-            collapsible: true,
-
-            pagination: true,
-
-            rownumbers: true,
-
-            sortName: 'ID',
-
-            sortOrder: 'desc',
-
-            remoteSort: false,
-
-            idField: 'ID',
-
-            frozenColumns: [[
-
-                { field: 'ck', checkbox: true },
-
-                { title: '主键', field: 'ID', width: 80, sortable: true },
-
-                { title: '用户名', field: 'UName', width: 120, sortable: true },
-
-                { title: '密码', field: 'Pwd', width: 100, sortable: true }
-
-            ]],
-
-            toolbar: [{
-
-                id: 'btnadd',
-
-                text: '添加',
-
-                iconCls: 'icon-add',
-
-                handler: function () {
-
-                    $('#btnsave').linkbutton('enable');
-
-                }
-
-            }, {
-
-                id: 'btncut',
-
-                text: '修改',
-
-                iconCls: 'icon-cut',
-
-                handler: function () {
-
-                    $('#btncut').linkbutton('enable');
-
-                }
-
-            }, '-', {
-
-                id: '删除',
-
-                text: 'Save',
-
-                iconCls: 'icon-cancel',
-
-            }]
-
-        });
-
-        }
-        */
+        //datagrid
         function initTable(queryData) {
             $('#test').datagrid({//添加数据表格 
                 title: '用户管理',
@@ -175,6 +84,14 @@
                         ShowCreateUserDialog();
                     }
                 }, '-', {
+                    id: 'btnSearch',
+                    text: '浏览用户信息',
+                    iconCls: 'icon-search',
+                    handler: function () {
+                        //给用户设置特殊权限
+                        ShowUserInfoDialog();
+                    }
+                }, '-', {
                     id: 'btncut',
                     text: '修改用户',
                     iconCls: 'icon-cut',
@@ -192,6 +109,14 @@
                         DeleteUserInfoByClick();
                     }
                 }, '-', {
+                        id: 'btnsave',
+                        text: '回收站',
+                        iconCls: 'icon-remove',
+                        handler: function () {
+                            //确认只删除一条用户信息
+                            DeleteUserInfoByClick("not");
+                        }
+                }, '-', {
                     id: 'btnSetRole',
                     text: '设置用户角色',
                     iconCls: 'icon-redo',
@@ -207,7 +132,7 @@
                         //给用户设置特殊权限
                         SerUserAction();
                     }
-                }]
+                    }]
             });
         }
 
@@ -295,7 +220,7 @@
         }
 
         //实现多选删除信息
-        function DeleteUserInfoByClick() {
+        function DeleteUserInfoByClick(not) {
             //获取到用户选定的某一列的ID号
             var deleteUserInfoID = $("#test").datagrid("getSelections");
             //判断用户选择了多少条数据
@@ -316,30 +241,77 @@
                 UNameList = UNameList.substring(0, UNameList.length - 1);
                 //var LoginUName = $("#test").datagrid("getSelections")[0].UName;
                 //发送异步请求删除数据
-                $.messager.confirm("删除信息", "您确认删除<font color='Red' size='3'>" + UNameList + "</font>用户吗？", function (DeleteUserInfo) {
-                    if (DeleteUserInfo) {
-                        $.post("/UserInfo/DeleteUserInfo", { deleteUserInfoID: ids, UName: UNameList }, function (data) {
+                var postData = "";
+
+                if (not == null) {
+
+                    postData = {
+
+                        deleteUserInfoID: ids, UName: UNameList
+
+                    }
+
+                }
+
+                else {
+
+                    postData = {
+
+                        deleteUserInfoID: ids, UName: UNameList, Not: not
+
+                    }
+
+                }
+
+                //然后确认发送异步请求的信息到后台删除数据
+
+                $.messager.confirm("删除信息", "您确认删除<font color='red' size='3'>" + UNameList + "</font>用户吗？", function (DeleteUser) {
+
+                    if (DeleteUser) {
+
+                        $.get("/UserInfo/DeleteUserInfo", postData, function (data) {
+
                             if (data == "OK") {
+
+                                //友情提示用户删除成功，刷新表格
+
                                 $.messager.alert("友情提示", "删除成功");
+
                                 $("#test").datagrid("reload");
 
-                                //当删除完成的时候清除掉所选择的长度，防止下次选择的时候还记录了上次的内容
+                                //当删除完成之后，第二次删除的时候还记得上次的信息，这样是不可以的，所以我们需要清除第一次的信息
+
                                 //第一种方法
-                                //deleteUserInfoID.length = "";
+
+                                rows.length = "";
+
                                 //第二种方法
+
                                 $("#test").datagrid("clearSelections");
+
                             }
+
                             else {
+
                                 $.messager.alert("友情提示", "删除失败:" + data);
+
                             }
+
                         });
+
                     }
+
                 });
+
             }
+
             else {
-                $.messager.alert("友情提示", "请您选择要删除的数据");
+
+                alert("请选择你要删除的数据");
+
             }
-        }
+
+        };
 
         //弹出修改用户的对话框
         function ShowUpdateUserDialog() {
@@ -355,6 +327,19 @@
             }
         }
 
+        //浏览用户信息
+        function ShowUserInfoDialog() {
+            var UpdateUserInfoID = $("#test").datagrid("getSelections");
+            if (UpdateUserInfoID.length == 1) {//判断选中的记录数是否为1
+                $("#BrowseUserDialog").dialog("open").dialog("setTitle", "浏览用户信息");
+
+                //绑定显示用户的详细信息
+                BingUserInfoDetails();
+            }
+            else {
+                $.messager.alert("友情提示", "每次只能修改一行数据，你已经选择了<font color='red' size='6'>" + UpdateUserInfoID.length + "</font>行");
+            }
+        }
         //绑定修改用户的信息显示在用户的TextBox文本框中
         function BingUpdateDetailsShowTextBox() {
             //首先获取选中的用户的ID
@@ -369,6 +354,21 @@
                 $("#PwdOK1").val(date.Pwd);
                 $("#Phone1").val(date.Phone);//为什么phone没有传过来？--修改界面的phone文本框设置了easyui-numberbox样式
                 $("#Mail1").val(date.Mail);
+            });
+        }
+        //绑定用户信息
+        function BingUserInfoDetails() {
+            //首先获取选中的用户的ID
+            var CheckID = $("#test").datagrid("getSelections")[0].UserInfoID;
+
+            //使用异步的getJSON请求绑定前台传递过来的数据
+            $.getJSON("/UserInfo/GetBindDetails", { ID: CheckID }, function (date) {
+                //绑定数据显示到控件上面，UName,Pwd,PwdOK,Phone,Mail
+                $("#ID2").val(CheckID).attr('readonly', true);
+                $("#UName2").val(date.UName).attr('readonly', true);
+                $("#Pwd2").val(date.Pwd).attr('readonly', true);
+                $("#Phone2").val(date.Phone).attr('readonly', true);//为什么phone没有传过来？--修改界面的phone文本框设置了easyui-numberbox样式
+                $("#Mail2").val(date.Mail).attr('readonly', true);
             });
         }
 
@@ -405,16 +405,19 @@
             });
         }
         //功能类似MVC Remote特性
-        //检查用户名是否存在
+        //检查用户名是否存在    ======================================存在Bug，点击用户名文本框不更新，当丢失焦点时还是会报错=========================
         function CheckUserInfoIsTrue() {
-            $("#UName").blur(function () {
+            $("#UName,#UName1").blur(function () {
                 //获取输入到控件的值
-                var UName = $("#UName").val();
+
+                var UName = $("#UName").val()
+                UName = $("#UName1").val();
                 //使用异步验证
                 $.post("/UserInfo/CheckUserName", { UName: UName }, function (date) {
                     if (date == "OK") {
                         alert("用户名已经存在，请您检查");
                         $("#UName").val("");
+                        $("#UName1").val("");
                         return;
                     }
                 });
@@ -591,12 +594,11 @@
                 </tr>
                 <tr>
                     <td><label for="Phone1">电话：</label></td>
-                    @*<td><input type="text" id="Phone1" name="Phone"/></td>*@
-                    <td><input class="easyui-numberbox" type="text" id="Phone1" name="Phone" data-options="validType:'length[1,14]'" /></td>
+                    <td><input type="text" id="Phone1" name="Phone" data-options="validType:'length[1,14]'" /></td>
                     <td><span style="color:red">必须数字</span></td>
                 </tr>
                 <tr>
-                    <td><label for="Mail1">邮箱:</label></td>   <!--data-options="validType:'email'"-->
+                    <td><label for="Mail1">邮箱:</label></td> 
                     <td><input class="easyui-validatebox" type="text" id="Mail1" name="Mail" data-options="validType:'email'" /></td>
                 </tr>
                 <tr>
@@ -608,7 +610,39 @@
             </table>
         </form>
     </div>
-
+    @*----------------------------设置浏览的的弹出层--------------------------------*@
+    <div id="BrowseUserDialog" class="easyui-dialog" style="width:360px;height:300px;padding:10px 20px"
+         closed="true" resizable="true" modal="true" buttons="#dlg-buttons" align="center">
+        <form id="UpdateUserInfo" method="post" novalidate="novalidate">
+            <table id="tblUpdate">
+                <tr>
+                    <th colspan="2">浏览用户信息</th>
+                </tr>
+                <tr>
+                    <td><label for="ID2">用户ID:</label></td>
+                    <td><input class="easyui-validatebox" type="text" id="ID2" name="ID" readonly="true" /></td>
+                    <td>
+                </tr>
+                <tr>
+                    <td><label for="UName2">用户名：</label></td>
+                    <td><input  type="text" id="UName2" name="UName"/></td>
+                    <td>
+                </tr>
+                <tr>
+                    <td><label for="Pwd2">密码：</label></td>
+                    <td><input  type="text" id="Pwd2" name="Pwd" /></td>
+                </tr>
+                <tr>
+                    <td><label for="Phone2">电话：</label></td>
+                    <td><input type="text" id="Phone2" name="Phone"/></td>
+                </tr>
+                <tr>
+                    <td><label for="Mail2">邮箱:</label></td>  
+                    <td><input  type="text" id="Mail2" name="Mail"  /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
     @*----------------------------设置用户角色的的弹出层--------------------------------*@
     <div id="UserRoleInfoDialog" class="easyui-dialog" style="width:500px;height:400px;padding:10px 20px"
          closed="true" resizable="true" modal="true" buttons="#dlg-buttons" align="center">

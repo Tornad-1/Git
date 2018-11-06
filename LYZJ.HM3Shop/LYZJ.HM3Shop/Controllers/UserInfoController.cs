@@ -87,7 +87,7 @@ namespace LYZJ.HM3Shop.Controllers
         /// </summary>
         /// <param name="deleteUserInfoID"></param>
         /// <returns></returns>
-        public ActionResult DeleteUserInfo(string deleteUserInfoID, string UName)
+        public ActionResult DeleteUserInfo(string deleteUserInfoID, string UName, string Not)
         {
             //========================================== Application 待完成 =======================================
             //首先确认是哪个用户登录进来的，如果此用户正在登录系统，则不允许删除此用户
@@ -127,20 +127,54 @@ namespace LYZJ.HM3Shop.Controllers
             {
                 deleteIDList.Add(Convert.ToInt32(ID));
             }
-            if (_userInfoService.DeleteUserInfo(deleteIDList) > 0)
+            if (Not != null)
+
             {
+
+                //伪删除,也就是根据用户的ID修改信息，首先查询出实体信息
+
+                foreach (var deleteId in deleteIDList)
+
+                {
+
+                    var EditUserDeleteIsNot = _userInfoService.LoadEntities(c => c.UserInfoID == deleteId).FirstOrDefault();
+
+                    EditUserDeleteIsNot.DelFlag = 1;
+                    _userInfoService.UpdateEntity(UInfo);
+
+                }
+
                 return Content("OK");
+
             }
+
+            else
+
+            {
+
+                //最后执行批量删除数据的方法
+
+                if (_userInfoService.DeleteUserInfo(deleteIDList) > 0)
+
+                {
+
+                    return Content("OK");
+
+                }
+
+            }
+
             return Content("删除失败，请您检查");
 
 
-            #region -----实现只删除一条数据--------
-            //_userInfoService.DeleteUser(deleteIDList);
-            //实例化UserInfo表
-            //UserInfo userInfo = new UserInfo();
-            //userInfo.ID = deleteUserInfoID;
-            //_userInfoService.DeleteEntities(userInfo);
-            #endregion
+
+    #region -----实现只删除一条数据--------
+    //_userInfoService.DeleteUser(deleteIDList);
+    //实例化UserInfo表
+    //UserInfo userInfo = new UserInfo();
+    //userInfo.ID = deleteUserInfoID;
+    //_userInfoService.DeleteEntities(userInfo);
+    #endregion
 
         }
         /// <summary>

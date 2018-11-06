@@ -51,7 +51,7 @@ namespace LYZJ.HM3Shop.BLL
         /// <summary>
         /// 加载用户模糊查询的数据（调用LoadEntities实现加载）
         /// </summary>
-        /// <param name="query"></param>
+        /// <param name="query">进行模糊查询的参数的类型</param>
         /// <returns></returns>
         public IQueryable<UserInfo> LoadSearchData(GetModelQuery query)
         {
