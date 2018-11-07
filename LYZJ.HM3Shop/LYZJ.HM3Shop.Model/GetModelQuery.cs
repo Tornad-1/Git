@@ -27,5 +27,7 @@ namespace LYZJ.HM3Shop.Model
 
         public string GroupType { get; set; }
 
+        public int DelFlag { get; set; }
+
     }
 }

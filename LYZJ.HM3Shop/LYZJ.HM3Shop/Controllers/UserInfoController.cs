@@ -41,6 +41,8 @@ namespace LYZJ.HM3Shop.Controllers
             int pageIndex = Request["page"] == null ? 1 : int.Parse(Request["page"]);//判断查询的页数
             int pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);//判断查询的页数
 
+            // 回收站数据
+            int flag = Request["DelFlag"] == null ? 0 : int.Parse(Request["DelFlag"]);
 
             ////SearchName,SearchMail
             string searchName = Request["SearchName"];//模糊查询的关键字
@@ -53,6 +55,14 @@ namespace LYZJ.HM3Shop.Controllers
             userInfoQuery.Name = searchName;
             userInfoQuery.Mail = searchMail;
             userInfoQuery.total = 0;
+            if (flag == 0)
+            {
+                userInfoQuery.DelFlag = 0;
+            }
+            else
+            {
+                userInfoQuery.DelFlag = 1;
+            }
 
             //放置依赖刷新
             var data = from u in _userInfoService.LoadSearchData(userInfoQuery)
@@ -62,7 +72,7 @@ namespace LYZJ.HM3Shop.Controllers
 
             var result = new { total = userInfoQuery.total, rows = data };
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            return  JsonDate(result);
         }
         /// <summary>
         /// 注册用户
@@ -140,7 +150,7 @@ namespace LYZJ.HM3Shop.Controllers
                     var EditUserDeleteIsNot = _userInfoService.LoadEntities(c => c.UserInfoID == deleteId).FirstOrDefault();
 
                     EditUserDeleteIsNot.DelFlag = 1;
-                    _userInfoService.UpdateEntity(UInfo);
+                    _userInfoService.UpdateEntity(EditUserDeleteIsNot);
 
                 }
 
@@ -192,7 +202,7 @@ namespace LYZJ.HM3Shop.Controllers
             EditUserInfo.Pwd = userInfo.Pwd;
             EditUserInfo.Mail = userInfo.Mail;
             EditUserInfo.Phone = userInfo.Phone;
-            EditUserInfo.DelFlag = 0;
+            EditUserInfo.DelFlag = userInfo.DelFlag;
 
             _userInfoRepository.UpdateEntity(userInfo);
 

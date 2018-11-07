@@ -68,6 +68,15 @@ namespace LYZJ.HM3Shop.BLL
             {
                 temp = temp.Where<UserInfo>(u => u.Mail.Contains(query.Mail));
             }
+            //进行回收站过滤
+            if (query.DelFlag==0)
+            {
+                temp = temp.Where<UserInfo>(u => u.DelFlag==0);
+            }
+            if (query.DelFlag == 1)
+            {
+                temp = temp.Where<UserInfo>(u => u.DelFlag == 1);
+            }
             //返回总数
             query.total = temp.Count();
 

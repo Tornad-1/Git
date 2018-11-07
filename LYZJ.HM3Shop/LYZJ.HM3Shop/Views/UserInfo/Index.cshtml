@@ -66,6 +66,7 @@
                     { field: 'Pwd', title: "密码", width: 150, sortable: true, },
                     { field: 'Phone', title: "电话", width: 150, sortable: true, },
                     { field: 'Mail', title: "EMail", width: 150, sortable: true, },
+                    { field: 'SubTime', title: "添加时间", width: 150, sortable: true}
                     // formatter 单元格的格式化函数                 
                     //{   ================问题代码   时间格式化出了问题======================
                     //    field: 'SubTime', title: "添加时间", width: 150, sortable: true,
@@ -108,15 +109,30 @@
                         //确认只删除一条用户信息
                         DeleteUserInfoByClick();
                     }
-                }, '-', {
+                    }
+                    , '-', {
                         id: 'btnsave',
-                        text: '回收站',
+                        text: ' 删除到回收站',
                         iconCls: 'icon-remove',
                         handler: function () {
                             //确认只删除一条用户信息
                             DeleteUserInfoByClick("not");
                         }
-                }, '-', {
+                    }, '-', {
+                        id: 'btnsave',
+                        text: '回收站',
+                        iconCls: 'icon-sum',
+                        handler: function () {
+                            ShowRecycleBin();
+                        }
+                    }, '-', {
+                        id: 'btnsave',
+                        text: '还原',
+                        iconCls: 'icon-back',
+                        handler: function () {
+                            ReturnFromRec();
+                        }
+                    }, '-', {
                     id: 'btnSetRole',
                     text: '设置用户角色',
                     iconCls: 'icon-redo',
@@ -135,6 +151,7 @@
                     }]
             });
         }
+
 
         //弹出添加用户的对话框
         function ShowCreateUserDialog() {
@@ -176,6 +193,61 @@
                 });
             });
         }
+        //显示回收站数据
+        function ShowRecycleBin() {
+            //ClearTextBox();
+            var queryData = { DelFlag: 1 };
+            initTable(queryData);
+        }
+        //从回收站回收数据
+        function ReturnFromRec() {
+            var dg = $("#test").datagrid("getSelections");
+           //============遍历出选中了那几行==============
+            if (dg.length >= 1) {
+                var ids = "";   //1,2,3,4
+                var name = "";
+                var phone = "";
+                var mail = "";
+                var pwd = "";
+                for (var i = 0; i < dg.length; i++) {
+                    ids += dg[i].UserInfoID + ",";
+                    pwd += dg[i].Pwd + ",";
+                    name += dg[i].UName + ",";
+                    phone += dg[i].Phone + ",";
+                    mail += dg[i].EMail + ",";
+                } 
+            }
+            ids = ids.substring(0, ids.length - 1);
+            name = name.substring(0, name.length - 1);
+            pwd = pwd.substring(0, pwd.length - 1);
+            phone = phone.substring(0, phone.length - 1);
+            mail = mail.substring(0, mail.length - 1);
+
+            var ids1 = ids.split(',');
+            var pwd1 = pwd.split(',');
+            var phone1 = phone.split(',');
+            var mail1 = mail.split(',');
+            var name1 = name.split(',');
+            for (var d = 0; d < dg.length; d++) {
+            var postData = {
+                UserInfoID: ids1[d],
+                UName: name1[d],
+                Pwd: pwd1[d],
+                Phone: phone1[d],
+                Mail: mail1[d],
+                DelFlag: 0
+            };
+            //使用异步实现修改用户信息
+            $.post("/UserInfo/UpdateInfo", postData, function (date) {
+                if (date == "OK") {
+                    $("#test").datagrid('reload');
+                }
+                else {
+                    alert("修改失败，请检查");
+                }
+                });
+            }
+        }
 
         //当添加或者修改完成后清空文本框中的值
         function ClearTextBox() {
@@ -187,132 +259,67 @@
             $("#Mail").val("");
         }
 
-        //确认只删除一条用户信息
-        function TestUserInfo() {
-            //确认只删除一条用户信息
-            //function DeleteUserInfoByClick() {
-            //    //获取到用户选定的某一列的ID号
-            //    var deleteUserInfoID = $("#test").datagrid("getSelections");
-            //    //判断用户选择了多少条数据
-            //    if (deleteUserInfoID.length == 1) {
-            //        $.messager.confirm("删除信息", "您确认删除该条信息吗？", function (DeleteUserInfo) {
-            //            if (DeleteUserInfo) {
-            //                $.post("/UserInfo/DeleteUserInfo", { deleteUserInfoID: deleteUserInfoID[0].ID }, function (data) {
-            //                    if (data == "OK") {
-            //                        alert("删除成功");
-            //                        $("#test").datagrid("reload");
-
-            //                        //当删除完成的时候清除掉所选择的长度，防止下次选择的时候还记录了上次的内容
-            //                        deleteUserInfoID.length = "";
-
-            //                    }
-            //                    else {
-            //                        alert("删除失败，请检查");
-            //                    }
-            //                });
-            //            }
-            //        });
-            //    }
-            //    else {
-            //        $.messager.alert("友情提示", "每次只能删除一行，你已经选择了<font color='red' size='6'>" + deleteUserInfoID.length + "</font>行");
-            //    }
-            //}
-        }
-
         //实现多选删除信息
         function DeleteUserInfoByClick(not) {
-            //获取到用户选定的某一列的ID号
+            //获取到用户选定的列的ID号
             var deleteUserInfoID = $("#test").datagrid("getSelections");
             //判断用户选择了多少条数据
             // //异步将删除的ID发送到后台，后台删除之后，返回前台OK，前台刷新表格
             if (deleteUserInfoID.length >= 1) {
                 var ids = "";   //1,2,3,4
                 for (var i = 0; i < deleteUserInfoID.length; i++) {
-                    ids += deleteUserInfoID[i].UserInfoID + ",";
+                    ids += deleteUserInfoID[i].UserInfoID + ",";//遍历id并用','分隔
                 }
                 //去掉最后的一个,
                 ids = ids.substring(0, ids.length - 1);
-
-                //遍历出删除用户的信息
+                alert(ids);
+                //遍历出删除用户的名字
                 var UNameList = "";
                 for (var i = 0; i < deleteUserInfoID.length; i++) {
                     UNameList += deleteUserInfoID[i].UName + ",";
                 }
                 UNameList = UNameList.substring(0, UNameList.length - 1);
+                alert(UNameList);
                 //var LoginUName = $("#test").datagrid("getSelections")[0].UName;
                 //发送异步请求删除数据
                 var postData = "";
-
                 if (not == null) {
-
                     postData = {
-
                         deleteUserInfoID: ids, UName: UNameList
-
                     }
-
                 }
-
                 else {
-
                     postData = {
-
                         deleteUserInfoID: ids, UName: UNameList, Not: not
-
                     }
-
                 }
-
                 //然后确认发送异步请求的信息到后台删除数据
 
                 $.messager.confirm("删除信息", "您确认删除<font color='red' size='3'>" + UNameList + "</font>用户吗？", function (DeleteUser) {
-
                     if (DeleteUser) {
-
                         $.get("/UserInfo/DeleteUserInfo", postData, function (data) {
-
                             if (data == "OK") {
-
                                 //友情提示用户删除成功，刷新表格
-
                                 $.messager.alert("友情提示", "删除成功");
-
                                 $("#test").datagrid("reload");
-
                                 //当删除完成之后，第二次删除的时候还记得上次的信息，这样是不可以的，所以我们需要清除第一次的信息
-
-                                //第一种方法
-
+                                //第一种方法                            
                                 rows.length = "";
-
                                 //第二种方法
-
                                 $("#test").datagrid("clearSelections");
-
-                            }
-
+                            }                       
                             else {
 
                                 $.messager.alert("友情提示", "删除失败:" + data);
-
                             }
-
                         });
-
-                    }
-
+                    }                
                 });
-
             }
-
             else {
-
                 alert("请选择你要删除的数据");
-
             }
-
         };
-
         //弹出修改用户的对话框
         function ShowUpdateUserDialog() {
             var UpdateUserInfoID = $("#test").datagrid("getSelections");
